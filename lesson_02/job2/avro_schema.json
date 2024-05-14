@@ -1,0 +1,10 @@
+{
+"type": "record",
+"name": "SalesRecord",
+"fields": [
+    {"name": "client", "type": ["null", "string"]},
+    {"name": "purchase_date", "type": ["null", "string"]},
+    {"name": "product", "type": ["null", "string"]},
+    {"name": "price", "type": ["null", "int"]}
+]
+}
