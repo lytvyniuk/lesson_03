@@ -8,6 +8,7 @@ app = Flask(__name__)
 token = os.environ.get('AUTH_TOKEN')
 
 def convert_json_to_avro():
+    global avro_schema
     content = request.get_json()
     stg_dir = content.get('stg_dir')
     raw_dir = content.get('raw_dir')
@@ -24,16 +25,8 @@ def convert_json_to_avro():
         with open(json_path, 'r') as json_file:
             json_data = json.load(json_file)
 
-        avro_schema = {
-            "type": "record",
-            "name": "SalesRecord",
-            "fields": [
-                {"name": "client", "type": ["null", "string"]},
-                {"name": "purchase_date", "type": ["null", "string"]},
-                {"name": "product", "type": ["null", "string"]},
-                {"name": "price", "type": ["null", "int"]}
-            ]
-        }
+        with open('avro_schema.json', 'r') as f:
+            avro_schema = json.load(f)
 
         with open(avro_path, 'wb') as avro_file:
             fastavro.writer(avro_file, avro_schema, json_data)
