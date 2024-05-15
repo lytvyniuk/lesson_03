@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def handle_request():
     convert_json_to_avro()
-    return jsonify({"message": "Converting completed successfully"}), 200
+    return jsonify({"message": "Converting completed successfully"}), 201
 
 if __name__ == '__main__':
     app.run(debug=True, port=8082)

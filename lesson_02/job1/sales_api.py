@@ -4,7 +4,7 @@ import os
 import json
 import requests
 
-token = os.environ.get('AUTH_TOKEN')
+token = '2b8d97ce57d401abd89f45b0079d8790edd940e6'
 
 def get_sales(date: str, page: int) -> Tuple[List[Dict[str, Any]], str]:
     """

@@ -8,7 +8,6 @@ app = Flask(__name__)
 token = os.environ.get('AUTH_TOKEN')
 
 def convert_json_to_avro():
-    global avro_schema
     content = request.get_json()
     stg_dir = content.get('stg_dir')
     raw_dir = content.get('raw_dir')
